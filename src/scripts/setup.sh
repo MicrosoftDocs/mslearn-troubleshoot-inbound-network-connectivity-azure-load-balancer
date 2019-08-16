@@ -198,9 +198,3 @@ az vm create \
   --vnet-name retailappvnet \
   --subnet retailappsubnet \
   --public-ip-address-allocation static
-
-LOADBALANCERIP=$(az network public-ip show \
-  --resource-group $GROUPNAME \
-  --name retailappip \
-  --query "ipAddress" \
-  --output tsv)
