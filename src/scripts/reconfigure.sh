@@ -1,18 +1,6 @@
-# Script to reconfigure the lab environment and intriduce problems that the student diagnoses and corrects.
+# Script to reconfigure the lab environment and introduce problems that the student diagnoses and corrects.
 
 GROUPNAME=$(az group list --query "[].name" --output tsv)
-
-JUMPBOXIP=$(az vm list-ip-addresses \
-  --resource-group $GROUPNAME \
-  --name retailappvmjumpbox \
-  --query "[].virtualMachine.network.publicIpAddresses[].ipAddress" \
-  --output tsv)
-
-LOADBALANCERIP=$(az network public-ip show \
-  --resource-group $GROUPNAME \
-  --name retailappip \
-  --query "ipAddress" \
-  --output tsv)
 
 # POINT HEALTH PROBE AT PORT 85 IN BACKEND POOL
 az network lb probe update \
