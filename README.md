@@ -3,8 +3,8 @@ page_type: sample
 languages:
 - csharp
 products:
-- dotnet
-description: "Add 150 character max description"
+- dotnet core
+description: "Scripts and stress test application for the module"
 urlFragment: "update-this-to-unique-url-stub"
 ---
 
@@ -18,15 +18,14 @@ Guidance on onboarding samples to docs.microsoft.com/samples: https://review.doc
 Taxonomies for products and languages: https://review.docs.microsoft.com/new-hope/information-architecture/metadata/taxonomies?branch=master
 -->
 
-Give a short description for your sample here. What does it do and why is it important?
+The repository contains the scripts that set up the lab environment for the module **Troubleshoot inbound network connectivity for Azure Load Balancer**. This repository also holds the code for the stress-testing application used by the lab.
 
 ## Contents
 
-Outline the file contents of the repository. It helps users navigate the codebase, build configuration and any related assets.
-
 | File/folder       | Description                                |
 |-------------------|--------------------------------------------|
-| `src`             | Sample source code.                        |
+| `src/scripts`     | Scripts that configure the lab environment |
+| `src/stresstest`  | Source code for the stress test application|
 | `.gitignore`      | Define what to ignore at commit time.      |
 | `CHANGELOG.md`    | List of changes to the sample.             |
 | `CONTRIBUTING.md` | Guidelines for contributing to the sample. |
@@ -35,19 +34,28 @@ Outline the file contents of the repository. It helps users navigate the codebas
 
 ## Prerequisites
 
-Outline the required components and tools that a user might need to have on their machine in order to run the sample. This can be anything from frameworks, SDKs, OS versions or IDE releases.
+The stress test application requires the .NET Core SDK.
+The scripts are intended to be run from a BASH prompt in the Sandbox (Cloud Shell).
 
 ## Setup
 
-Explain how to prepare the sample once the user clones or downloads the repository. The section should outline every step necessary to install dependencies and set up any settings (for example, API keys and output folders).
+At the start of the lab, run `bash src/setup.sh` to build the load balancer, virtual machines, and virtual network.
 
-## Runnning the sample
+## Running the sample
 
-Outline step-by-step instructions to execute the sample and see its output. Include steps for executing the sample from the IDE, starting specific services in the Azure portal or anything related to the overall launch of the code.
+To run the `stresstest` application:
 
-## Key concepts
+    1. Move to the /src/stresstest folder.
+    2. Run `dotnet stresstest $LOADBALANCERIP`
+    3. Allow the application to run for 5 minutes, and then press Enter to close it.
 
-Provide users with more context on the tools and services used in the sample. Explain some of the code that is being used and how services interact with each other.
+After running the `stresstest` application, run `bash src/reconfigure.sh` to reconfigure the load balancer, virtual machines, and virtual network.
+
+Run the `stresstest` application again and observe the results.
+
+Follow the lab instructions to diagnose and correct the issues.
+
+Run the `stresstest` application to verify that the system is functioning correctly again.
 
 ## Contributing
 
