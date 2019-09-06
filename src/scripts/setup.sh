@@ -1,6 +1,8 @@
 # Script to create the load balancer and virtual machines for the lab
 
-GROUPNAME=$(az group list --query "[].name" --output tsv)
+#GROUPNAME=$(az group list --query "[].name" --output tsv)
+
+GROUPNAME=$1
 
 az network vnet create \
   --resource-group $GROUPNAME \
