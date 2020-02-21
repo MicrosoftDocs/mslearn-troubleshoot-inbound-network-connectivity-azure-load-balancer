@@ -1,7 +1,5 @@
-GROUPNAME=$(az group list --query "[].name" --output tsv)
-
 LOADBALANCERIP=$(az network public-ip show \
-  --resource-group $GROUPNAME \
+  --resource-group $RESOURCEGROUP \
   --name retailappip \
   --query "ipAddress" \
   --output tsv)
