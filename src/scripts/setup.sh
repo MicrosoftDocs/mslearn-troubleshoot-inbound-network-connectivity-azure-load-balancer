@@ -160,7 +160,7 @@ az vm create \
   --nics nicvm1 \
   --admin-username azureuser \
   --admin-password $PASSWORD \
-  --image UbuntuLTS \
+  --image Ubuntu2204 \
   --public-ip-address "" 
 
 az vm extension set \
@@ -177,7 +177,7 @@ az vm create \
   --nics nicvm2 \
   --admin-username $USERNAME \
   --admin-password $PASSWORD \
-  --image UbuntuLTS \
+  --image Ubuntu2204 \
   --public-ip-address ""
 
 az vm extension set \
@@ -193,7 +193,7 @@ az vm create \
   --name retailappvmjumpbox \
   --admin-username $USERNAME \
   --admin-password $PASSWORD \
-  --image UbuntuLTS \
+  --image Ubuntu2204 \
   --vnet-name retailappvnet \
   --subnet retailappsubnet \
   --public-ip-address-allocation static
